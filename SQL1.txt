@@ -1,0 +1,43 @@
+SQL 1
+Create table student with field sno, sname, gender and mark with sno as primary key and assign suitable constraints for each attribute.
+Insert 5 records into the table
+
+1.	Find the average mark.
+
+	select avg(mark) from student;
+
+
+AVG(MARK)
+----------
+33
+
+2.	Display the sno and sname for all students who got more   than the avg mark. 
+
+	select sno,sname from student where mark> (select avg(mark) from student);
+
+                        SNO     SNAME
+                       ------   -------
+        				1 	  manu
+        				4 	  chinnu
+         				5 	  sri
+
+3.	Display the boy students whose name contains letter ‘r’.	
+
+	select sname from student where sname like '%r%’ and gender=’m';
+
+                         SNAME
+                        -------
+                          ram
+                          sri
+
+
+4.	Display boy student name for those who have marks less than 40.
+
+	select sname from student where gender='m' and mark<40;
+
+    SNAME
+   --------
+     manu
+     shan
+     ram
+    
