@@ -1,0 +1,69 @@
+SQL 2
+Create table department with fields ename,salary,dno,dname and place with dno as primary key.
+	create table department(dno number(5)primary key,dname varchar(25), ename varchar(25), salary number(7), place varchar(20));
+	desc department;
+         Name                      Null?            Type
+        -----------------------------------------------------
+         DNO                      NOT NULL       NUMBER(5)
+         DNAME                                   VARCHAR(25)
+         ENAME                                   VARCHAR(25)
+         SALARY                                  NUMBER(7)
+         PLACE                                   VARCHAR(20)
+
+Insert 5 records into the table.
+	insert into department values(1,'Cs','Anil',3000,'Tvm');
+	insert into department values(2,'Ele','Manu',5000,'Dvpm');
+	insert into department values(3,'Maths','Anu',4500,'Klm');
+	insert into department values(4,'Cs','Sanu',3000,'Tvm');
+	insert into department values(5,'Maths','Sinu',7300,'Alp');
+	select * from department;
+
+       DNO   DNAME   ENAME    SALARY    PLACE
+      ----- ----- --------- --------  --------- 
+       1 	   Cs  	 Anil  	 3000     Tvm
+       2	   Ele     Manu  	 5000     Dvpm
+       3 	   Maths   Anu       4500     Klm
+       4	   Cs      Sanu      3000     Tvm
+       5 	   Maths   Sinu      7300     Alp
+
+1.	Change the type of field place.
+   
+	alter table department modify(place char(20));
+	desc department;
+          
+          
+Name                 Null?        Type
+-----------------------------------------------
+ DNO                 NOT NULL     NUMBER(5)
+ DNAME                            VARCHAR(25)
+ ENAME                            VARCHAR(25)
+ SALARY                           NUMBER(7)
+ PLACE                            CHAR(20)
+
+2.	Display total salary of the organization.
+
+	select sum(salary) from department;
+
+SUM(SALARY)
+-----------
+18800
+
+3.	Display ename for those who are working in the same department as Anil.
+
+	select ename from department where dname=(select dname from department where ename='Anil');
+
+ENAME
+-------
+Anil
+Sanu
+                 
+4.	Display ename and salary,salary rounded with 5 digits.
+
+	select ename,round(salary,5) from department; 
+        ENAME        ROUND(SALARY,4)
+        --------     ---------------
+        Anil              3000
+        Manu              5000
+        Anu               4500
+        Sanu              3000
+        Sinu              7300
